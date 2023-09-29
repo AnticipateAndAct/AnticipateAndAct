@@ -3,8 +3,8 @@
 This is the code release for the paper [Anticipate & Act](https://raraghavarora.github.io/ahsoka). It contains code for replicating the results of LLM based task anticipation and PDDL based action planning.
 
 ### :house: Household Domain
-**[PDDL Domain](https://github.com/AnticipateAndAct/AnticipateAndAct/tree/main/PDDL)**
-for common household tasks like cooking, laundry can be found the given link. This domain consists of 33 actions, 5 different rooms, 33 objects distributed over 5-10 types, and 19 receptacles. We perform experiments on this domain using the [Fast Downward](https://www.fast-downward.org/) planner.
+PDDL Domain for common household tasks like cooking, laundry can be found 
+**[here](https://github.com/AnticipateAndAct/AnticipateAndAct/tree/main/PDDL)**. This domain consists of 33 actions, 5 different rooms, 33 objects distributed over 5-10 types, and 19 receptacles. We perform experiments on this domain using the [Fast Downward](https://www.fast-downward.org/) planner.
 
 More code coming soon..
 <!--
