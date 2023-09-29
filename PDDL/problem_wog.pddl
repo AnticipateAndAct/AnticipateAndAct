@@ -103,7 +103,7 @@ mold cake - tobake
     (food_remaining)  
 
 
-;; distance in meters.
+
 
     ( = (distance Bedroom Kitchen) 60)
     ( = (distance Bedroom LivingRoom) 50)
