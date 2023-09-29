@@ -1,0 +1,24 @@
+
+; Version LPG-td-1.4
+; Seed 62063642
+; Command line: ./LPG-td-1.4/lpg-td -o domain_wog.pddl -f problem_wog.pddl -quality 
+; Problem problem_wog.pddl
+; Actions having STRIPS duration
+; Time 1.57
+; Plan generation time 0.00
+; Search time 0.03
+; Parsing time 0.02
+; Mutex time 1.51
+; MetricValue 491.00
+
+0:   (MOVE_AGENT BEDROOM KITCHEN) [1]
+1:   (PICKUP MAGGIE SHELF KITCHEN) [1]
+1:   (SWITCH_ON BURNER KITCHEN) [1]
+2:   (PUTDOWN MAGGIE STOVE KITCHEN) [1]
+3:   (COOK MAGGIE COOKED_MAGGIE) [1]
+4:   (PICKUP COOKED_MAGGIE STOVE KITCHEN) [1]
+5:   (PUTDOWN COOKED_MAGGIE STOVE KITCHEN) [1]
+6:   (PICKUP COOKED_MAGGIE STOVE KITCHEN) [1]
+7:   (MOVE_AGENT KITCHEN GARDEN) [1]
+8:   (MOVE_AGENT GARDEN BEDROOM) [1]
+9:   (PUTDOWN COOKED_MAGGIE PLATE BEDROOM) [1]

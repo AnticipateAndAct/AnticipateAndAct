@@ -1,0 +1,24 @@
+
+(move_agent bedroom kitchen)
+(pickup cereal shelf kitchen)
+(putdown cereal stove kitchen)
+(switch_on burner kitchen)
+(cook cereal cooked_cereal)
+(pickup cooked_cereal stove kitchen)
+(move_agent kitchen bedroom)
+(putdown cooked_cereal plate bedroom)
+(serve_food cooked_cereal bedroom)
+; cost = 269 (general cost)
+
+(move_agent bedroom kitchen)
+(pickup milk fridge kitchen)
+(move_agent kitchen bedroom)
+(putdown milk glass bedroom)
+(serve_drink milk bedroom)
+; cost = 138 (general cost)
+
+
+
+; cost = 407 (general cost)
+
+

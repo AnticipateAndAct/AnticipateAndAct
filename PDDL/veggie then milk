@@ -1,0 +1,24 @@
+(move bedroom kitchen)
+(pickup veggie fridge kitchen)
+(putdown veggie basin kitchen)
+(clean veggie)
+(pickup veggie basin kitchen)
+(putdown veggie stove kitchen)
+(switch_on burner kitchen)
+(cook veggie cooked_veggie)
+(pickup cooked_veggie stove kitchen)
+(move kitchen bedroom)
+(putdown cooked_veggie plate bedroom)
+(serve cooked_veggie bedroom)
+
+cost = 287
+
+(move bedroom kitchen)
+(pickup milk fridge kitchen)
+(move kitchen bedroom)
+(putdown milk glass bedroom)
+(serve milk bedroom)
+
+cost = 138
+
+; Total-cost = 425 (general cost)
