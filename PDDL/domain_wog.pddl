@@ -104,7 +104,6 @@
 )
 
 
-;Replace Move Receptacle with pick up putdown.
 
 (:action Switch_on ;working
  :parameters(?o - obj ?l - location)
