@@ -7,13 +7,13 @@ import random
 import time
 from tqdm import tqdm
 import json
-from keyconfig import gpt_3, gpt_4
+from keyconfig import gpt_3_api, gpt_4_api
 
 openai.api_type = "azure"
 openai.api_base = "https://task-anticipation-gpt3.openai.azure.com/"    # ahana gpt 3.5
 
 openai.api_version = "2023-03-15-preview"
-openai.api_key = gpt_4
+openai.api_key = gpt_4_api
 engine_name = 'ahana_gpt'
 
 f = open('task.json', 'r')
