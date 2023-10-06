@@ -103,7 +103,7 @@ mold cake - tobake
     (food_remaining)  
 
 
-
+   ;Time taken to move between locations
 
     ( = (distance Bedroom Kitchen) 60)
     ( = (distance Bedroom LivingRoom) 50)
