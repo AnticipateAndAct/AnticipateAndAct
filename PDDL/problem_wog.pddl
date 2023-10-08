@@ -4,8 +4,6 @@
 
 (:objects 
 
-;Avoiding grounding
-  
 Fridge Shelf Table - receptacle
           
 Apple Sliced_Apple Mango Sliced_Mango - fruit
@@ -19,8 +17,6 @@ wine milk - drink
 Laptop cup - obj
     
 mold cake - tobake
-    
-
         
 )
 
@@ -103,41 +99,41 @@ mold cake - tobake
     (food_remaining)  
 
 
+   ;Time taken to move between locations
 
-
-    ( = (distance Bedroom Kitchen) 60)
-    ( = (distance Bedroom LivingRoom) 50)
-    ( = (distance Bedroom Pantry) 140)
-    ( = (distance Bedroom Garden) 170)
-    ( = (distance Bedroom Bedroom) 0)
+    ( = (duration_ Bedroom Kitchen) 60)
+    ( = (duration_ Bedroom LivingRoom) 50)
+    ( = (duration_ Bedroom Pantry) 140)
+    ( = (duration_ Bedroom Garden) 170)
+    ( = (duration_ Bedroom Bedroom) 0)
   
 
-    ( = (distance Kitchen Kitchen) 0)
-    ( = (distance Kitchen LivingRoom) 100)
-    ( = (distance Kitchen Pantry) 80)
-    ( = (distance Kitchen Garden) 110)
-    ( = (distance Kitchen Bedroom) 60)
+    ( = (duration_ Kitchen Kitchen) 0)
+    ( = (duration_ Kitchen LivingRoom) 100)
+    ( = (duration_ Kitchen Pantry) 80)
+    ( = (duration_ Kitchen Garden) 110)
+    ( = (duration_ Kitchen Bedroom) 60)
   
 
-    ( = (distance LivingRoom Kitchen) 100)
-    ( = (distance LivingRoom LivingRoom) 0)
-    ( = (distance LivingRoom Pantry) 90)
-    ( = (distance LivingRoom Garden) 110)
-    ( = (distance LivingRoom Bedroom) 50)
+    ( = (duration_ LivingRoom Kitchen) 100)
+    ( = (duration_ LivingRoom LivingRoom) 0)
+    ( = (duration_ LivingRoom Pantry) 90)
+    ( = (duration_ LivingRoom Garden) 110)
+    ( = (duration_ LivingRoom Bedroom) 50)
 
 
-    ( = (distance Pantry Kitchen) 80)
-    ( = (distance Pantry LivingRoom) 90)
-    ( = (distance Pantry Pantry) 0)
-    ( = (distance Pantry Garden) 20)
-    ( = (distance Pantry Bedroom) 140)
+    ( = (duration_ Pantry Kitchen) 80)
+    ( = (duration_ Pantry LivingRoom) 90)
+    ( = (duration_ Pantry Pantry) 0)
+    ( = (duration_ Pantry Garden) 20)
+    ( = (duration_ Pantry Bedroom) 140)
 
 
-    ( = (distance Garden Kitchen) 110)
-    ( = (distance Garden LivingRoom) 110)
-    ( = (distance Garden Pantry) 20)
-    ( = (distance Garden Garden) 0)
-    ( = (distance Garden Bedroom) 170)
+    ( = (duration_ Garden Kitchen) 110)
+    ( = (duration_ Garden LivingRoom) 110)
+    ( = (duration_ Garden Pantry) 20)
+    ( = (duration_ Garden Garden) 0)
+    ( = (duration_ Garden Bedroom) 170)
   
 
 
@@ -148,29 +144,35 @@ mold cake - tobake
 ;(sliced Sliced_Mango)
 ;(stuff_at Cleaned_clothes WashingMachine Pantry)
 ;(stuff_at remaining_food plate Bedroom)
-
 ;(stuff_at Remaining_veggy plate Bedroom)
-; (agent_at Pantry)
-; (stuff_at Clothes WashingMachine Pantry)
+;(agent_at Pantry)
+;(stuff_at Clothes WashingMachine Pantry)
+
 )
 
+;Comment the goal states that you dont need.
 (:goal (and
 
    (Awake)
+
    (fruit_served Sliced_Apple Bedroom)
    (food_served Cooked_cereal Bedroom)
    (veggy_served Veggie Bedroom)
    (served_drink Milk Bedroom)
    (baked_served cake Bedroom)
+
    (cleaned_food Remaining_food Bedroom)
    (cleaned_food Remaining_fruit Bedroom)
    (cleaned_food Remaining_veggy Bedroom)
    (cleaned_food Remaining_baked Bedroom)
+
    (CleanedHouse)
    (dusted sofa livingRoom)
    (laundrydone)
+
    (watering_plants)
    (cutting_done)
+
    (Trash_cleared)
    (movie_started)
 
@@ -181,11 +183,5 @@ mold cake - tobake
 
 
 )
-
-
-
-
-
-; Fire extinguisher
 
 

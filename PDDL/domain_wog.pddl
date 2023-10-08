@@ -11,15 +11,8 @@
 (:constants
     
     LivingRoom Kitchen Garden Pantry Bedroom - location
-
-    Alarm Light Morning_Radio - obj 
-
   
-    Faucet VacuumCleaner watering_hose Burner Oven_switch WashingMachine_switch water Remaining_food Remaining_fruit Remaining_baked Remaining_veggy Dirtydishes Dishwasher_Switch - obj 
-
-    Television trash_1 trash_2 trash cleaned_dishes - obj 
-
-    Clothes Cleaned_clothes gardening_tools LawnMower Ironed_clothes folded_clothes DustMop Sofa Window extinguisher - obj
+    Faucet VacuumCleaner watering_hose Burner Oven_switch WashingMachine_switch water Remaining_food Remaining_fruit Remaining_baked Remaining_veggy Dirtydishes Dishwasher_Switch Alarm Light Morning_Radio Television trash_1 trash_2 trash cleaned_dishes Clothes Cleaned_clothes gardening_tools LawnMower Ironed_clothes folded_clothes DustMop Sofa Window extinguisher - obj 
 
     Stove Basin CounterTop Dustbin_1 Dustbin_2 Master_Dustbin Oven WashingMachine plate glass Dryer LaundryBag IroningBoard Dishwasher Closet drawer - receptacle 
 
@@ -35,11 +28,8 @@
  (stuff_at ?o - obj ?r - receptacle ?l - location)
  (switched_on ?o - obj ?l - location)
  (switched_off ?o - obj ?l - location)
-
  (In_hand ?o - obj)
 
-;avoiding grounding
- 
  (cleaned ?o - obj)
  (sliced ?o - obj)
  (cooked ?o - obj)
@@ -57,7 +47,6 @@
  (CleanedHouse)
  (dropped ?o1 - obj ?r - receptacle ?l - location)
 
-
  (cleaned_food ?o - obj ?l - location)
  (Dried ?o - obj)
  (Ironedclothes)
@@ -65,7 +54,6 @@
  (laundrydone)
  (dusted ?o - obj ?l - location)
 
- ;gardening
  (watering_plants)
  (cutting_done)
  (Trash_cleared)
@@ -77,11 +65,11 @@
 )
 
 (:functions 
-    (distance ?l1 ?l2 - location)
+    (duration_ ?l1 ?l2 - location)
     (total-cost)
 )
 
-(:action Wake_up ;working
+(:action Wake_up 
  :parameters()
  :precondition (and
                    (agent_at Bedroom)
@@ -93,19 +81,19 @@
  :effect(Awake) 
 )
 
-(:action move_agent ;working
+(:action move_agent 
  :parameters (?l1 ?l2 - location)
  :precondition (and(agent_at ?l1)
                    )
  :effect(and(not(agent_at ?l1))
             (agent_at ?l2)
-            (increase (total-cost)(distance ?l1 ?l2))
+            (increase (total-cost)(duration_ ?l1 ?l2))
         )
 )
 
 
 
-(:action Switch_on ;working
+(:action Switch_on 
  :parameters(?o - obj ?l - location)
  :precondition(and(switched_off ?o ?l)
                   (agent_at ?l)
@@ -117,7 +105,7 @@
 )
 
 
-(:action Switch_off ;working
+(:action Switch_off 
  :parameters(?o - obj ?l - location)
  :precondition(and(switched_on ?o ?l)
                   (agent_at ?l)
@@ -152,7 +140,7 @@
 ) 
 
 
-(:action PickUp_Object ;working
+(:action PickUp_Object 
  :parameters(?o - obj ?l - location)
  :precondition(and(agent_at ?l)
                   (obj_at ?o ?l)
@@ -164,7 +152,7 @@
         )
 )
 
-(:action PutDown_Object ;working
+(:action PutDown_Object 
  :parameters (?o - obj ?l - location)
  :precondition (and(agent_at ?l)
                    (In_hand ?o)
@@ -175,7 +163,7 @@
              (increase (total-cost) 5))  
 ) 
 
-(:action Open      ;working              
+(:action Open                    
  :parameters (?r - receptacle ?l - location)
  :precondition(and(agent_at ?l)
                   (receptacle_at ?r ?l)
@@ -186,7 +174,7 @@
 )
 
 
-(:action dusting_with_dustmop ;working
+(:action dusting_with_dustmop 
  :parameters(?o - obj ?l - location)
  :precondition(and(In_hand DustMop)  
                   (agent_at ?l)
@@ -195,7 +183,7 @@
 )
 
 
-(:action VacuumHouse ;working
+(:action VacuumHouse 
  :parameters()
  :precondition(and(agent_at livingRoom)
                   (obj_at VacuumCleaner livingRoom)
@@ -208,7 +196,7 @@
 
 
  
-(:action clean_edible ;working
+(:action clean_edible 
  :parameters (?o1 - obj)
  :precondition (and(agent_at Kitchen)
                    (stuff_at ?o1 Basin Kitchen)
@@ -221,7 +209,7 @@
             (increase (total-cost) 8))
 )
 
-(:action slice ;working
+(:action slice 
  :parameters(?o1 ?o2 - obj)
  :precondition (and (agent_at Kitchen)
                     (stuff_at ?o1 CounterTop Kitchen)
@@ -237,7 +225,7 @@
          )                 
 )
 
-(:action cook ;working
+(:action cook 
  :parameters( ?o1 ?o3 - obj)
  :precondition (and (agent_at Kitchen)
                     (stuff_at ?o1 Stove Kitchen)
@@ -251,7 +239,7 @@
          )                 
 )
 
-(:action serve_food ;working
+(:action serve_food 
  :parameters(?o1 - food ?l - location)
  :precondition(and(agent_at ?l)
                   (cooked ?o1)
@@ -268,12 +256,10 @@
 )
 
 
-(:action BakeACake ;working
+(:action BakeACake 
  :parameters(?o1 ?o3 - tobake)
  :precondition (and (agent_at Kitchen)
                     (stuff_at ?o1 Oven Kitchen)
-                    ;(not(In_hand ?o1))
-                    ;(not(In_hand ?o3))
                     (not(baked ?o3))
                     (switched_on Oven_switch Kitchen)
                     (equal ?o1 ?o3)   
@@ -285,7 +271,7 @@
          )                 
 )
 
-(:action serve_fruit ;working
+(:action serve_fruit 
  :parameters (?o1 - fruit ?l - location )
  :precondition(and(agent_at ?l)
                   (sliced ?o1)
@@ -302,7 +288,7 @@
 )
 
 
-(:action serve_vegetable ;working
+(:action serve_vegetable 
  :parameters (?o1 - vegetable ?l - location )
  :precondition(and(agent_at ?l)
                   (cleaned ?o1)
@@ -321,7 +307,7 @@
 
 
 
-(:action serve_baked ;working
+(:action serve_baked 
  :parameters(?o1 - tobake ?l - location )
  :precondition(and(agent_at ?l)
                   (baked ?o1)
@@ -338,7 +324,7 @@
 )
 
 
-(:action Serve_Drink ;working
+(:action Serve_Drink 
  :parameters (?o - drink ?l - location)
  :precondition(and(agent_at ?l)
                   (stuff_at ?o glass ?l)
@@ -372,7 +358,7 @@
  :effect(dropped ?o1 ?r ?l)
 )
 
-(:action WashingClothes  ;working            
+(:action WashingClothes              
  :parameters ()
  :precondition (and
                    (stuff_at Clothes WashingMachine Pantry)
@@ -386,7 +372,7 @@
 )
 
 
-(:action DryClothes    ;working
+(:action DryClothes    
  :parameters( )
  :precondition(and(agent_at Pantry)
                   (stuff_at Cleaned_clothes Dryer Pantry)
@@ -395,7 +381,7 @@
 )
 
 
-(:action Iron_Clothes  ;working
+(:action Iron_Clothes  
  :parameters()
  :precondition(and(Dried Cleaned_clothes)
                   (stuff_at Cleaned_clothes IroningBoard Bedroom)
@@ -408,7 +394,7 @@
 ))
 
 
-(:action FoldClothes ;working
+(:action FoldClothes 
  :parameters()
  :precondition(and(Ironedclothes)
                   (obj_at Ironed_clothes Bedroom)
@@ -419,7 +405,7 @@
 ))
 
 
-(:action Laundry_Done ;working
+(:action Laundry_Done 
  :parameters()
  :precondition(and(stuff_at folded_clothes Closet Bedroom)
  (not(laundrydone))
@@ -428,7 +414,7 @@
 )
 
 
-(:action water_the_plants ;working
+(:action water_the_plants 
  :parameters ()
  :precondition(and
                (agent_at Garden)
@@ -442,7 +428,7 @@
 
 
 
-(:action cutting_the_grass ;working
+(:action cutting_the_grass 
  :parameters ()
  :precondition(and(agent_at garden)
                   (obj_at LawnMower Garden)
@@ -453,7 +439,7 @@
 ))
 
 
-(:action Trash_Cleared ;working
+(:action Trash_Cleared 
  :parameters ()
  :precondition(and(stuff_at trash_1 Master_Dustbin Garden)
                   (stuff_at trash_2 Master_Dustbin Garden)
@@ -463,7 +449,7 @@
 )
 
 
-(:action WashingDishes ;working
+(:action WashingDishes 
  :parameters()
  :precondition(and
           (stuff_at Dirtydishes Dishwasher Kitchen)
@@ -487,6 +473,7 @@
  ))
 
 
+
 (:action Start_Movie
 :parameters()
 :precondition (and(Dim_the_lights Bedroom)
@@ -496,6 +483,7 @@
 :effect(and(movie_started)(increase (total-cost) 3))
 
 )
+
 
 
 (:action Extinguish_Fire
